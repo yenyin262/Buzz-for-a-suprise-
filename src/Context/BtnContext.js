@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ClientID from "../config/api";
-// import Image from "../Components/Image";
 
 const BtnContext = React.createContext();
 
@@ -13,6 +12,12 @@ export class BtnProvider extends Component {
       Quote: false
     };
   }
+  closeSnackbar = () => {
+    this.setState({
+      Image: false,
+      Quote: false
+    });
+  };
   pressBuzzerForImage = () => {
     fetch("https://api.unsplash.com/photos/random", {
       headers: {
@@ -29,7 +34,7 @@ export class BtnProvider extends Component {
     })
       .then(response => response.json())
       .then(json => {
-        this.setState({ Image: json.urls.regular });
+        this.setState({ Image: json.urls.small });
         //console.log(json.urls.regular, "response");
       });
   };
@@ -53,9 +58,9 @@ export class BtnProvider extends Component {
         value={{
           pressBuzzerForImage: this.pressBuzzerForImage,
           pressBuzzerForQuotes: this.pressBuzzerForQuotes,
-          isOpen: this.state.isOpen,
           getImage: this.state.Image,
-          getQuote: this.state.Quote
+          getQuote: this.state.Quote,
+          closeSnackbar: this.closeSnackbar
         }}
       >
         {children}
