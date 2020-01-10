@@ -5,7 +5,13 @@ import { Button } from "@material-ui/core";
 const QuoteBtn = () => (
   <BtnConsumer>
     {({ pressBuzzerForQuotes }) => (
-      <Button onClick={() => pressBuzzerForQuotes()}>Buzz for a Quote</Button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => pressBuzzerForQuotes()}
+      >
+        Buzz for a Quote
+      </Button>
     )}
   </BtnConsumer>
 );
