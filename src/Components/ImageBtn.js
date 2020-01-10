@@ -5,7 +5,13 @@ import { Button } from "@material-ui/core";
 const ImageBtn = () => (
   <BtnConsumer>
     {({ pressBuzzerForImage }) => (
-      <Button onClick={() => pressBuzzerForImage()}>Buzz for an Image</Button>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => pressBuzzerForImage()}
+      >
+        Buzz for an Image
+      </Button>
     )}
   </BtnConsumer>
 );
