@@ -18,24 +18,28 @@ const Image = () => (
             "aria-describedby": "message-id"
           }}
         >
-          <SnackbarContent
-            aria-describedby="client-snackbar"
-            message={
-              <span id="client-snackbar">
-                {getImage ? <img src={getImage} /> : ""}
-              </span>
-            }
-            action={[
-              <IconButton
-                key="close"
-                aria-label="close"
-                color="inherit"
-                onClick={closeSnackbar}
-              >
-                <CloseIcon />
-              </IconButton>
-            ]}
-          />
+          {getImage ? (
+            <SnackbarContent
+              aria-describedby="client-snackbar"
+              message={
+                <span id="client-snackbar">
+                  <img src={getImage} />
+                </span>
+              }
+              action={[
+                <IconButton
+                  key="close"
+                  aria-label="close"
+                  color="inherit"
+                  onClick={closeSnackbar}
+                >
+                  <CloseIcon />
+                </IconButton>
+              ]}
+            />
+          ) : (
+            ""
+          )}
         </Snackbar>
       );
     }}
